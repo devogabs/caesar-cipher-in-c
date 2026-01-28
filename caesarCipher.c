@@ -30,9 +30,6 @@ void encrypt(char message[], int shift){
     }
 }
 
-// The dumb AI autocomplete didn't handle special characters or spaces, so the output is not accurate.
-// Example: "Hello, World!" with a shift of 2 would be "Jgnnq, Yqtnf!", instead of "Jgnnq."Yqtnf#" (comma and exclamation mark remain unchanged).
-
 
 void decrypt(char message[], int shift){
 
