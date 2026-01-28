@@ -34,6 +34,29 @@ void encrypt(char message[], int shift){
 // Example: "Hello, World!" with a shift of 2 would be "Jgnnq, Yqtnf!", instead of "Jgnnq."Yqtnf#" (comma and exclamation mark remain unchanged).
 
 
+void decrypt(char message[], int shift){
+
+    for(int i=0; message[i] != '\0'; i++){
+        char letter = message[i];    
+        // Decrypt uppercase letters
+        if (letter >= 'A' && letter <= 'Z'){
+            letter = letter - shift;
+            if(letter < 'A'){
+                letter = letter + 'Z' - 'A' + 1;
+            }
+            message[i] = letter;
+        }
+        // Decrypt lowercase letters
+        if (letter >= 'a' && letter <= 'z'){
+            letter = letter - shift;
+            if(letter < 'a'){
+                letter = letter + 'z' - 'a' + 1;
+            }
+            message[i] = letter;
+        }
+    }
+}
+
 
 int main(){
 
@@ -51,7 +74,12 @@ int main(){
         printf("Encrypted message: %s\n", message);
 
     } else if(choice == 2){
-        printf("Functionality not implemented yet.\n");
+        printf("Enter message to decrypt: ");
+        scanf(" %[^\n]s", message); // read string with spaces
+        printf("Enter shift value: ");
+        scanf("%d", &shift);
+        decrypt(message, shift);
+        printf("Decrypted message: %s\n", message);
 
     } else {
         printf("Invalid choice.\n");
