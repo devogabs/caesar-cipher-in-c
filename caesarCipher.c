@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-// This script will do one of too things: encrypt or decrypt a message using the Caesar cipher technique.
+// This script will do one of two things: encrypt or decrypt a message using the Caesar cipher technique.
 // The user will be prompted to choose between encryption and decryption, enter a message, and provide a shift value.
 // The program will then output the encrypted or decrypted message accordingly.
 
