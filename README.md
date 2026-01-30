@@ -1,1 +1,2 @@
-# Ceaser Cipher in C
+# Caeser Cipher in C
+
