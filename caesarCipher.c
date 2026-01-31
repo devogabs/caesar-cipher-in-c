@@ -8,25 +8,15 @@
 void encrypt(char message[], int shift){
     for(int i = 0; message[i] != '\0'; i++){
         char letter = message[i];
-        // Encrypt uppercase letters
-        if(letter >= 'A' && letter <= 'Z'){
-            letter = letter + shift;
-            if(letter > 'Z'){
-                letter = letter - 'Z' + 'A' - 1; // does that even make sense?
-            
-            }
-            message[i] = letter;
-        
-        // Encrypt lowercase letters
-        } else if(letter >= 'a' && letter <= 'z'){
-            letter = letter + shift;
-            if(letter > 'z'){
-                letter = letter - 'z' + 'a' - 1;
-
-            }
-            message[i] = letter;
+        int offset = 0;
+        offset = letter + shift;
+        if (offset > 126){
+            offset = offset % 126;
+            letter = letter + offset;
 
         }
+        message[i] = letter;
+
     }
 }
 
@@ -35,24 +25,17 @@ void decrypt(char message[], int shift){
 
     for(int i=0; message[i] != '\0'; i++){
         char letter = message[i];    
-        // Decrypt uppercase letters
-        if (letter >= 'A' && letter <= 'Z'){
-            letter = letter - shift;
-            if(letter < 'A'){
-                letter = letter + 'Z' - 'A' + 1;
-            }
-            message[i] = letter;
+        int offset = 0;
+        offset = letter + shift;
+        if (offset > 126){
+            offset = offset % 126;
+            letter = letter + offset;
+
         }
-        // Decrypt lowercase letters
-        if (letter >= 'a' && letter <= 'z'){
-            letter = letter - shift;
-            if(letter < 'a'){
-                letter = letter + 'z' - 'a' + 1;
-            }
-            message[i] = letter;
-        }
+        message[i] = letter;
     }
 }
+
 
 
 int main(){
