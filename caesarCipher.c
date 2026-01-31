@@ -8,13 +8,14 @@
 void encrypt(char message[], int shift){
     for(int i = 0; message[i] != '\0'; i++){
         char letter = message[i];
-        int offset = 0;
+        int offset;
         offset = letter + shift;
         if (offset > 126){
             offset = offset % 126;
             letter = letter + offset;
-
         }
+        letter = offset;
+
         message[i] = letter;
 
     }
@@ -23,15 +24,17 @@ void encrypt(char message[], int shift){
 
 void decrypt(char message[], int shift){
 
-    for(int i=0; message[i] != '\0'; i++){
-        char letter = message[i];    
-        int offset = 0;
-        offset = letter + shift;
-        if (offset > 126){
-            offset = offset % 126;
-            letter = letter + offset;
-
+    
+    for(int i = 0; message[i] != '\0'; i++){
+        char letter = message[i];
+        int offset;
+        offset = letter - shift;
+        if (offset < 33){
+            offset = 126 - (33 - offset);
+         
         }
+        letter = offset;
+
         message[i] = letter;
     }
 }
